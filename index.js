@@ -6,6 +6,8 @@ let $timeHeader = document.querySelector('#time-header');
 let $resultHeader = document.querySelector('#result-header');
 let $gameTime = document.querySelector('#game-time');
 
+let $footer = document.querySelector('#footer');
+
 let score = 0;
 let isGameStarted = false;
 
@@ -18,6 +20,7 @@ function startGame() {
     setGameTime();
     $gameTime.setAttribute('disabled', 'true');
     isGameStarted = true;
+    hide($footer);
     hide($start);
     $game.style.backgroundColor = '#fff';
 
@@ -60,6 +63,7 @@ function endGame() {
     show($start);
     $game.style.backgroundColor = '#ccc';
     $game.innerHTML = '';
+    show($footer);
     hide($timeHeader);
     show($resultHeader)
 }
@@ -87,6 +91,7 @@ function renderBox() {
     let maxLeft = gameSize.width - boxSize;
 
     box.style.height = box.style.width = boxSize + 'px';
+    box.style.border = '1px solid black';
     box.style.backgroundColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
     box.style.position = 'absolute';
     box.style.top = getRandom(0, maxTop) + 'px';
